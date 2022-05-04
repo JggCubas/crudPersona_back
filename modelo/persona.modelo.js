@@ -30,7 +30,6 @@ Personas.getAll = (result) => {
   let query = "SELECT * FROM Persona";
   sql.query(query, (err, res) => {
     if (err) {
-      console.log("error: ", err);
       result(null, err);
       return;
     }
@@ -40,7 +39,6 @@ Personas.getAll = (result) => {
 Personas.remove = (id, result) => {
   sql.query("DELETE FROM Persona WHERE Id = ?", id, (err, res) => {
     if (err) {
-      console.log("error: ", err);
       result(null, err);
       return;
     }
@@ -48,7 +46,6 @@ Personas.remove = (id, result) => {
       result({ kind: "not_found" }, null);
       return;
     }
-    console.log("deleted tutorial with id: ", id);
     result(null, res);
   });
 };
@@ -64,7 +61,6 @@ Personas.updateById = (id, persona, result) => {
         return;
       }
       if (res.affectedRows == 0) {
-        // not found Tutorial with the id
         result({ kind: "not_found" }, null);
         return;
       }

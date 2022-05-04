@@ -37,46 +37,46 @@ exports.create = (req, res) => {
         Avatar : req.body.nodo.Avatar || ''
 
     });
-    // Save Tutorial in the database
+    // Save 
     Personas.create(persona, (err, data) => {
       if (err)
         res.status(500).send({
           message:
-            err.message || "Some error occurred while creating the Tutorial."
+            err.message || "Some error occurred while creating."
         });
       else res.send(data);
     });
 };
-// Retrieve all Tutorials from the database (with condition).
+// Retrieve all
 exports.findAll = (req, res) => {
 
   Personas.getAll((err, data) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials."
+          err.message || "Some error occurred while retrieving."
       });
     else res.send(data);
   });
 };
-// Delete a Tutorial with the specified id in the request
+// Delete
 exports.delete = (req, res) => {
   console.log(req);
   Personas.remove(req.params.id, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Tutorial with id ${req.params.id}.`
+            message: `Not found id ${req.params.id}.`
           });
         } else {
           res.status(500).send({
-            message: "Could not delete Tutorial with id " + req.params.Id
+            message: "Could not delete  id " + req.params.Id
           });
         }
-      } else res.send({ message: `Tutorial was deleted successfully!` });
+      } else res.send({ message: `was deleted successfully!` });
     });
 };
-// Update a Tutorial identified by the id in the request
+// Update
 exports.update = (req, res) => {
   // Validate Request
    if (!req.body.nodo) {
@@ -92,11 +92,11 @@ exports.update = (req, res) => {
        if (err) {
          if (err.kind === "not_found") {
            res.status(404).send({
-             message: `Not found Tutorial with id ${req.params.id}.`
+             message: `Not found id ${req.params.id}.`
            });
          } else {
            res.status(500).send({
-             message: "Error updating Tutorial with id " + req.params.id
+             message: "Error updating  id " + req.params.id
            });
          }
        } else res.send(data);
